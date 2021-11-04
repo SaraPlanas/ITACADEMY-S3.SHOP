@@ -83,14 +83,21 @@ function buy(id) {
     // 2. Add found product to the cartList array
     for (var i = 0; i < products.length; i++) {
         if (id == products[i].id) {
-            window.alert("Encontrado el producto ");
+            console.log("Encontrado el producto ");
 
-            cart.push(products[i].id);
-            window.alert("metido" + products[i].id);
-            cartList.push(products[i].id);
-            window.alert("metido" + products[i].id);
-            window.alert(cart);
-            window.alert(cartList)
+            // cart.push(products[i].id);
+            //console.log("metido" + products[i].id);
+            if (cartList.includes(products[i])) {
+                let amount = products[i].amount;
+                products[i]['amount'] = amount + 1
+            } else {
+                products[i]['amount'] = 1
+                cartList.push(products[i]);
+            }
+
+            console.log("metido" + JSON.stringify(products[i]));
+            // console.log(cart);
+            console.log(cartList)
         }
 
     }
@@ -100,8 +107,8 @@ function buy(id) {
 
 // Exercise 2
 function cleanCart() {
-    cart.length = 0;
-    cartList.length = 0;
+    cart = [];
+    cartList = [];
 }
 
 // Exercise 3
@@ -114,6 +121,18 @@ function calculateSubtotals() {
     // El subtotal dels productes del carret és un objecte com aquest:
     // var subtotals = { grocery: 0,  beauty: 0,  clothes: 0}
     // Ajuda: Haurà de quedar - te un bucle for i dins un if o un switch que validi cada tipus de producte i actualitzi la varible subtotal en funció d 'aquest tipus
+    for (var i = 0; i < cart.length; i++) {
+        if (id == products[i].id) {
+            console.log("Encontrado el producto ");
+
+            cart.push(products[i].id);
+            console.log("metido" + products[i].id);
+            cartList.push(products[i].id);
+            console.log("metido" + products[i].id);
+            console.log(cart);
+            console.log(cartList)
+        }
+    }
 }
 
 // Exercise 4
