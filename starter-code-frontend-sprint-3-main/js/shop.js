@@ -82,19 +82,15 @@ function buy(id) {
     // 2. Add found product to the cartList array
     for (var i = 0; i < products.length; i++) {
         if (id == products[i].id) {
-            if (cartList.includes(products[i])) {
-                let amount = products[i].amount;
-                products[i]['amount'] = amount + 1
-            } else {
-                products[i]['amount'] = 1
-                cartList.push(products[i]);
-            }
+
+            cartList.push(products[i]);
             console.log("Añadido al carrito:" + JSON.stringify(products[i]));
             console.log(cartList)
         }
     }
     calculateSubtotals();
-    calculateTotal()
+    calculateTotal();
+    generateCart();
 
 }
 
@@ -113,12 +109,12 @@ function calculateSubtotals() {
     subtotal.clothes.value = 0;
     for (var i = 0; i < cartList.length; i++) {
         if (cartList[i].type == "grocery") {
-            subtotal.grocery.value = subtotal.grocery.value + (cartList[i].price * cartList[i].amount);
+            subtotal.grocery.value = subtotal.grocery.value + cartList[i].price;
         } else if (cartList[i].type == "beauty") {
-            subtotal.beauty.value = subtotal.beauty.value + (cartList[i].price * cartList[i].amount);
+            subtotal.beauty.value = subtotal.beauty.value + cartList[i].price;
         } else if (cartList[i].type == "clothes") {
 
-            subtotal.clothes.value = subtotal.clothes.value + (cartList[i].price * cartList[i].amount);
+            subtotal.clothes.value = subtotal.clothes.value + cartList[i].price;
         } else {
             console.log("Tipo no encontrado");
         }
@@ -138,11 +134,42 @@ function calculateTotal() {
     console.log("Total: " + JSON.stringify(totalCarrito));
 
 }
+//funcion creada para buscar en Cart un elemento id  En caso de encontrarlo devolverá la posicion en la qu elo encuntre mas si lo ha encontrado
+function containsElement(id) {
+    var cartContainsElement = false;
+    let index = -1;
+    for (var j = 0; j < cart.length; j++) {
+        if (cart[j].id === id) {
+            cartContainsElement = true;
+            index = j;
+            break;
+        }
+    }
+    return { 'contains': cartContainsElement, 'index': index }
+}
 
 // Exercise 5
 function generateCart() {
     // Using the "cartlist" array that contains all the items in the shopping cart, 
     // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
+    cart = [];
+    for (var i = 0; i < cartList.length; i++) {
+        let cartContainsElement = containsElement(cartList[i].id);
+        if (cartContainsElement['contains']) {
+            let quantity = cart[cartContainsElement['index']].quantity;
+            let subtotalProduct = cart[cartContainsElement['index']].subtotalProduct;
+            cart[cartContainsElement['index']].quantity = quantity + 1;
+            cart[cartContainsElement['index']].subtotalProduct = subtotalProduct * cart[cartContainsElement['index']].quantity;
+        } else {
+            //parse y stringify utilizados para hacer un clone object y que los elementos de cart no compartan dirección de memoria con los elementos de cartList
+            let cartToAdd = JSON.parse(JSON.stringify(cartList[i]))
+            cartToAdd.quantity = 1;
+            cartToAdd.subtotalProduct = cartList[i].price;
+            cartToAdd.subtotalWithDiscount = 0;
+            cart.push(cartToAdd);
+        }
+    }
+    console.log(cart);
 }
 
 // Exercise 6
@@ -166,4 +193,5 @@ function removeFromCart(id) {
 // Exercise 10
 function printCart() {
     // Fill the shopping cart modal manipulating the shopping cart dom
+    cart()
 }
