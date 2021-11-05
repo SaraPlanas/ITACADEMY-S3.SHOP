@@ -78,15 +78,10 @@ var total = 0;
 
 // Exercise 1
 function buy(id) {
-
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cartList array
     for (var i = 0; i < products.length; i++) {
         if (id == products[i].id) {
-            console.log("Encontrado el producto ");
-
-            // cart.push(products[i].id);
-            //console.log("metido" + products[i].id);
             if (cartList.includes(products[i])) {
                 let amount = products[i].amount;
                 products[i]['amount'] = amount + 1
@@ -94,16 +89,14 @@ function buy(id) {
                 products[i]['amount'] = 1
                 cartList.push(products[i]);
             }
-
-            console.log("metido" + JSON.stringify(products[i]));
-            // console.log(cart);
+            console.log("Añadido al carrito:" + JSON.stringify(products[i]));
             console.log(cartList)
         }
-
     }
+    calculateSubtotals();
+    calculateTotal()
 
 }
-
 
 // Exercise 2
 function cleanCart() {
@@ -115,29 +108,35 @@ function cleanCart() {
 function calculateSubtotals() {
     // 1. Create a for loop on the "cartList" array 
     // 2. Implement inside the loop an if...else or switch...case to add the quantities of each type of product, obtaining the subtotals: subtotalGrocery, subtotalBeauty and subtotalClothes
-    //calculi els subtotals per a cadascun dels tipus de productes.
-    // El subtotal reflectirà l 'import, no la quantitat de productes.
-    //llegir cada producte del carret mitjançant un bucle, i en funció del seu tipus, actualitzar la variable subtotal que et toqui.
-    // El subtotal dels productes del carret és un objecte com aquest:
-    // var subtotals = { grocery: 0,  beauty: 0,  clothes: 0}
-    // Ajuda: Haurà de quedar - te un bucle for i dins un if o un switch que validi cada tipus de producte i actualitzi la varible subtotal en funció d 'aquest tipus
-    for (var i = 0; i < cart.length; i++) {
-        if (id == products[i].id) {
-            console.log("Encontrado el producto ");
+    subtotal.grocery.value = 0;
+    subtotal.beauty.value = 0;
+    subtotal.clothes.value = 0;
+    for (var i = 0; i < cartList.length; i++) {
+        if (cartList[i].type == "grocery") {
+            subtotal.grocery.value = subtotal.grocery.value + (cartList[i].price * cartList[i].amount);
+        } else if (cartList[i].type == "beauty") {
+            subtotal.beauty.value = subtotal.beauty.value + (cartList[i].price * cartList[i].amount);
+        } else if (cartList[i].type == "clothes") {
 
-            cart.push(products[i].id);
-            console.log("metido" + products[i].id);
-            cartList.push(products[i].id);
-            console.log("metido" + products[i].id);
-            console.log(cart);
-            console.log(cartList)
+            subtotal.clothes.value = subtotal.clothes.value + (cartList[i].price * cartList[i].amount);
+        } else {
+            console.log("Tipo no encontrado");
         }
     }
+    console.log("Subtotal de grocery:" + subtotal.grocery.value);
+    console.log("Subtotal de beauty:" + subtotal.beauty.value);
+    console.log("Subtotal de clothes:" + subtotal.clothes.value);
 }
 
 // Exercise 4
 function calculateTotal() {
     // Calculate total price of the cart either using the "cartList" array
+    var totalCarrito = 0;
+    for (let i in subtotal) {
+        totalCarrito = totalCarrito + subtotal[i].value;
+    }
+    console.log("Total: " + JSON.stringify(totalCarrito));
+
 }
 
 // Exercise 5
