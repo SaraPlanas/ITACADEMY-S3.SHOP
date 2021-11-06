@@ -77,10 +77,10 @@ var subtotal = {
 var total = 0;
 
 // Exercise 1
-function buy(id) {
+/*function buy(id) {
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cartList array
-    for (var i = 0; i < products.length; i++) {
+    /*for (var i = 0; i < products.length; i++) {
         if (id == products[i].id) {
 
             cartList.push(products[i]);
@@ -91,8 +91,9 @@ function buy(id) {
     calculateSubtotals();
     calculateTotal();
     generateCart();
-
-}
+    applyPromotionsCart()
+    addToCart();
+}*/
 
 // Exercise 2
 function cleanCart() {
@@ -135,7 +136,7 @@ function calculateTotal() {
 
 }
 //funcion creada para buscar en Cart un elemento id  En caso de encontrarlo devolverá la posicion en la qu elo encuntre mas si lo ha encontrado
-function containsElement(id) {
+/*function containsElement(id) {
     var cartContainsElement = false;
     let index = -1;
     for (var j = 0; j < cart.length; j++) {
@@ -146,20 +147,21 @@ function containsElement(id) {
         }
     }
     return { 'contains': cartContainsElement, 'index': index }
-}
+}*/
 
 // Exercise 5
+/*
 function generateCart() {
     // Using the "cartlist" array that contains all the items in the shopping cart, 
     // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
     cart = [];
+    subtotalProduct = 0;
     for (var i = 0; i < cartList.length; i++) {
         let cartContainsElement = containsElement(cartList[i].id);
         if (cartContainsElement['contains']) {
             let quantity = cart[cartContainsElement['index']].quantity;
-            let subtotalProduct = cart[cartContainsElement['index']].subtotalProduct;
             cart[cartContainsElement['index']].quantity = quantity + 1;
-            cart[cartContainsElement['index']].subtotalProduct = subtotalProduct * cart[cartContainsElement['index']].quantity;
+            cart[cartContainsElement['index']].subtotalProduct += cartList[i].price;
         } else {
             //parse y stringify utilizados para hacer un clone object y que los elementos de cart no compartan dirección de memoria con los elementos de cartList
             let cartToAdd = JSON.parse(JSON.stringify(cartList[i]))
@@ -171,10 +173,25 @@ function generateCart() {
     }
     console.log(cart);
 }
+*/
 
 // Exercise 6
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
+    for (var i = 0; i < cart.length; i++) {
+        if (cart[i].id == 1) {
+            if (cart[i].quantity >= 2) {
+                cart[i].price = 10;
+                cart[i].subtotalWithDiscount = cart[i].quantity * cart[i].price;
+            }
+        }
+        if (cart[i].id == 3) {
+            if (cart[i].quantity >= 10) {
+                cart[i].price = (cart[i].price * 0.66666666666);
+                cart[i].subtotalWithDiscount = cart[i].quantity * cart[i].price
+            }
+        }
+    }
 }
 
 // Exercise 7
@@ -182,6 +199,28 @@ function addToCart(id) {
     // Refactor previous code in order to simplify it 
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cart array or update its quantity in case it has been added previously.
+    subtotalProduct = 0;
+    for (var i = 0; i < products.length; i++) {
+        if (id == products[i].id) {
+            if (cart.includes(products[i])) {
+                let quantity = products[i].quantity;
+                products[i]['quantity'] = quantity + 1
+                products[i]['subtotalProduct'] += products[i].price
+            } else {
+                products[i]['quantity'] = 1
+                products[i]['subtotalProduct'] = products[i].price;
+                products[i]['subtotalWithDiscount'] = 0;
+                cart.push(products[i])
+            }
+            console.log("Añadido al carrito:" + JSON.stringify(products[i]));
+            console.log(cart)
+            cartList.push(products[i]);
+            console.log(cartList)
+        }
+    }
+    calculateSubtotals();
+    calculateTotal();
+    applyPromotionsCart()
 }
 
 // Exercise 9
