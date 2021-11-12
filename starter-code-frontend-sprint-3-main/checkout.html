@@ -54,32 +54,36 @@
                 </div>
                 <div class="mt-3 row ">
                     <h5 class="my-auto ">Email :</h5>
-                    <input class=" ml-3 input rounded p-2 " type="email " placeholder="Email " id="mail" onkeyup="validate()" onblur="validate()" />
+                    <input class=" ml-3 input rounded p-2 " type="email" placeholder="Email" id="mail" onkeyup="validate()" onblur="validate()" />
 
                 </div>
                 <div class="mt-3 row ">
                     <h5 class="my-auto ">Address :</h5>
-                    <input class="ml-3 input rounded p-2 " type="text " placeholder="Address " id="address" onkeyup="validate()" onblur="validate()" />
-
+                    <input class="ml-3 input rounded p-2 " type="text" placeholder="Address" id="address" onkeyup="validate()" onblur="validate()" />
+                    <div id="errorAddress" style="position: absolute; left: 10px; top: 50px;; z-index: 10" hidden>
+                        Numbers in the name are not valid
+                    </div>
                 </div>
             </div>
             <div class="col-sm-6 ">
                 <div class="mt-3 row ">
                     <h5 class="my-auto name my-auto ">Last Name :</h5>
-                    <input class=" ml-3 input rounded p-2 " type="text " placeholder="Last Name " id="lname" onkeyup="validate()" onblur="validate()" />
-
+                    <input class=" ml-3 input rounded p-2 " type="text" placeholder="Last Name" id="lname" onkeyup="validate()" onblur="validate()" />
+                    <div id="errorLName" style="position: absolute; left: 10px; top: 50px;; z-index: 10" hidden>
+                        Numbers in the name are not valid
+                    </div>
                 </div>
                 <div class="mt-3 row ">
                     <h5 class="my-auto my-auto ">Password :</h5>
-                    <input class=" ml-3 input password rounded p-2 " title="(4-8 characters) " type="password" minlength="4 " maxlength="8 " placeholder="Password " id="password " onkeyup="validate()" onblur="validate()" />
-                    <p id="errorPassword ">Enter a correct password</p>
+                    <input class=" ml-3 input password rounded p-2 " title="(4-8 characters)" type="password"  placeholder="Password" id="password" onkeyup="validate()" onblur="validate()" />
+                    <div id="errorPassword" style="position: absolute; left: 10px; top: 50px;; z-index: 10" hidden>Enter a correct password</div>
 
                 </div>
                 <div class="mt-3 row ">
                     <h5 class="my-auto my-auto ">Phone Number :</h5>
-                    <input class=" ml-3 phone input rounded p-2 " type="number " placeholder="Phone No. " id="phone" onkeyup="validate()" onblur="validate()" />
+                    <input class=" ml-3 phone input rounded p-2 " type="number" placeholder="Phone No." id="phone" onkeyup="validate()" onblur="validate()" />
 
-                    <p id="errorPhone ">Invalid phone number!!</p>
+                    <div id="errorPhone" style="position: absolute; left: 10px; top: 50px;; z-index: 10" hidden>Invalid phone number!!</div>
                 </div>
             </div>
         </div>
