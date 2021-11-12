@@ -46,44 +46,40 @@
             <div class="col-sm-6 ">
                 <div class="mt-3 row ">
                     <h5 class="my-auto ">First Name :</h5>
-                    <input class="name input rounded p-2 " type="text " placeholder="First Name " id="fname" onkeyup="validate()" onblur="validate()" />
-                    <div id="errorName" style="position: absolute; left: 10px; top: 50px;; z-index: 10" hidden>
-                        Numbers in the name are not valid
-                    </div>
-
+                    <input class="name input rounded p-2 " type="text " placeholder="First Name " id="fname" />
+                    <div id="feedback-fname" style="display: none; color: red; font-size: small;"> Solo letras y minimo 3 caracteres</div>
                 </div>
                 <div class="mt-3 row ">
                     <h5 class="my-auto ">Email :</h5>
-                    <input class=" ml-3 input rounded p-2 " type="email" placeholder="Email" id="mail" onkeyup="validate()" onblur="validate()" />
+                    <input class=" ml-3 input rounded p-2 " type="email" placeholder="Email" id="mail" />
+                    <div id="feedback-email" style="display: none; color: red; font-size: small;"> Comprobar que el email sea correcto</div>
 
                 </div>
                 <div class="mt-3 row ">
                     <h5 class="my-auto ">Address :</h5>
-                    <input class="ml-3 input rounded p-2 " type="text" placeholder="Address" id="address" onkeyup="validate()" onblur="validate()" />
-                    <div id="errorAddress" style="position: absolute; left: 10px; top: 50px;; z-index: 10" hidden>
-                        Numbers in the name are not valid
-                    </div>
+                    <input class="ml-3 input rounded p-2 " type="text" placeholder="Address" id="address" />
+                    <div id="feedback-address" style="display: none; color: red; font-size: small;">Minimo 3 caracteres</div>
                 </div>
             </div>
             <div class="col-sm-6 ">
                 <div class="mt-3 row ">
                     <h5 class="my-auto name my-auto ">Last Name :</h5>
-                    <input class=" ml-3 input rounded p-2 " type="text" placeholder="Last Name" id="lname" onkeyup="validate()" onblur="validate()" />
-                    <div id="errorLName" style="position: absolute; left: 10px; top: 50px;; z-index: 10" hidden>
-                        Numbers in the name are not valid
-                    </div>
+                    <input class=" ml-3 input rounded p-2 " type="text" placeholder="Last Name" id="lname" />
+                    <div id="feedback-lname" style="display: none; color: red; font-size: small;">Solo letras y minimo 3 caracteres</div>
+
+
                 </div>
                 <div class="mt-3 row ">
                     <h5 class="my-auto my-auto ">Password :</h5>
-                    <input class=" ml-3 input password rounded p-2 " title="(4-8 characters)" type="password"  placeholder="Password" id="password" onkeyup="validate()" onblur="validate()" />
-                    <div id="errorPassword" style="position: absolute; left: 10px; top: 50px;; z-index: 10" hidden>Enter a correct password</div>
+                    <input class=" ml-3 input password rounded p-2 " title="(4-8 characters)" type="password" placeholder="Password" id="password" />
+                    <div id="feedback-password" style="display: none; color: red; font-size: small;">Debe tener de 4 a 8 caracteres, con numeros y letras</div>
+
 
                 </div>
                 <div class="mt-3 row ">
                     <h5 class="my-auto my-auto ">Phone Number :</h5>
-                    <input class=" ml-3 phone input rounded p-2 " type="number" placeholder="Phone No." id="phone" onkeyup="validate()" onblur="validate()" />
-
-                    <div id="errorPhone" style="position: absolute; left: 10px; top: 50px;; z-index: 10" hidden>Invalid phone number!!</div>
+                    <input class=" ml-3 phone input rounded p-2 " type="number" placeholder="Phone No." id="phone" />
+                    <div id="feedback-phone" style="display: none; color: red; font-size: small;">Solo numeros y minimo 3 caracteres</div>
                 </div>
             </div>
         </div>
@@ -92,8 +88,8 @@
         <!-- Checkout ends here -->
         <!-- Buy button -->
         <div class="m-5 final text-right ">
-            <button type="button " id="btn " class="p-2 px-4 btn btn-primary shadow-lg " onclick="verificar() ">
-                <i class="fas fa-cart-arrow-down p-2 "></i>Buy</button>
+            <button type="button" id="btn" onclick="verificar()" class="p-2 px-4 btn btn-primary shadow-lg">
+            <i class="fas fa-cart-arrow-down p-2 "></i>Buy</button>
         </div>
     </form>
     <!-- Buy Button -->
