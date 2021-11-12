@@ -221,12 +221,22 @@ function addToCart(id) {
     calculateSubtotals();
     calculateTotal();
     applyPromotionsCart()
+
+
+
 }
 
 // Exercise 9
 function removeFromCart(id) {
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cartList array
+
+    alert("Eliminando");
+    var parent = document.getElementById("'" + id + "'").parentNode;
+    parent.removeChild(document.getElementById("'" + id + "'"));
+    alert("Eliminado");
+    console.log(cart)
+
 }
 
 // Exercise 10
