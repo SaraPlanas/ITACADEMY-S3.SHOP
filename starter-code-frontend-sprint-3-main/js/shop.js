@@ -241,6 +241,21 @@ function removeFromCart(id) {
 
 // Exercise 10
 function printCart() {
-    // Fill the shopping cart modal manipulating the shopping cart dom
-    cart()
+
+
+
+    let htmlCart = "<ul>";
+
+    for (i = 0; i < cart.length; i++) {
+        temp = "<li>" + cart[i].name + ("__Precio:") +
+            cart[i].price + ("__Cantidad:") + cart[i].quantity + '<button onclick="removeFromCart(' +
+            cart[i].id + ')">X</button></li>'
+        htmlCart += temp;
+    }
+
+    htmlCart += "</ul>";
+    document.getElementById('cart-modal').innerHTML = htmlCart;
+
+
+
 }
