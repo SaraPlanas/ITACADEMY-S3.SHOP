@@ -8,14 +8,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
     <link rel="stylesheet" href="css/shop.css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ShopNow</title>
 </head>
 
 <body>
-
     <!-- navbar -->
     <nav class="navbar navbar-expand-md bg-secondary sticky-top">
         <a class="navbar-brand text-white" href="index.html"><span><i class="fas fa-shopping-cart mr-2"></i></span>
@@ -23,7 +21,6 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -33,14 +30,11 @@
             </ul>
         </div>
     </nav>
-
     <h1 class="text-center mt-3 m-5">Welcome to the ShopNow</h1>
-
     <!-- Grocery part -->
     <section>
         <h2 class="text-center"><i class="fas fa-shopping-basket mr-2"></i>Grocery</h2>
         <div id="grocery" class="row ml-3 m-5">
-
             <div class="card col-sm-3 m-1 ml-5 p-4" style="width: 18rem;">
                 <img src="./images/product.svg" class="grocery-img">
                 <div class="card-body text-center">
@@ -49,7 +43,6 @@
                     <button type="button" onclick="addToCart(1)" class="btn btn-primary">Add to cart</button>
                 </div>
             </div>
-
             <div class="card col-sm-3 m-1 ml-5 p-4" style="width: 18rem;">
                 <img src="./images/product.svg" class="grocery-img">
                 <div class="card-body text-center">
@@ -58,7 +51,6 @@
                     <button type="button" onclick="addToCart(2)" class="btn btn-primary">Add to cart</button>
                 </div>
             </div>
-
             <div class="card col-sm-3 m-1 ml-5 p-4" style="width: 18rem;">
                 <img src="./images/product.svg" class="grocery-img">
                 <div class="card-body text-center">
@@ -69,12 +61,10 @@
             </div>
         </div>
     </section>
-
     <!-- beauty part -->
     <section>
         <h2 class="text-center"><i class="fas fa-heart mr-2"></i>Beauty</h2>
         <div id="beauty" class="row ml-3 m-5">
-
             <div class="card col-sm-3 m-1 ml-5 p-4" style="width: 18rem;">
                 <img src="./images/product.svg" class="grocery-img">
                 <div class="card-body text-center">
@@ -83,7 +73,6 @@
                     <button type="button" onclick="addToCart(4)" class="btn btn-primary">Add to cart</button>
                 </div>
             </div>
-
             <div class="card col-sm-3 m-1 ml-5 p-4" style="width: 18rem;">
                 <img src="./images/product.svg" class="grocery-img">
                 <div class="card-body text-center">
@@ -92,7 +81,6 @@
                     <button type="button" onclick="addToCart(5)" class="btn btn-primary">Add to cart</button>
                 </div>
             </div>
-
             <div class="card col-sm-3 m-1 ml-5 p-4" style="width: 18rem;">
                 <img src="./images/product.svg" class="grocery-img">
                 <div class="card-body text-center">
@@ -103,12 +91,10 @@
             </div>
         </div>
     </section>
-
     <!-- clothes part -->
     <section>
         <h2 class="text-center"><i class="fas fa-tshirt mr-2"></i>Clothes</h2>
         <div id="clothes" class="row ml-3 m-5">
-
             <div class="card col-sm-3 m-1 ml-5 p-4" style="width: 18rem;">
                 <img src="./images/product.svg" class="grocery-img">
                 <div class="card-body text-center">
@@ -117,7 +103,6 @@
                     <button type="button" onclick="addToCart(7)" class="btn btn-primary">Add to cart</button>
                 </div>
             </div>
-
             <div class="card col-sm-3 m-1 ml-5 p-4" style="width: 18rem;">
                 <img src="./images/product.svg" class="grocery-img">
                 <div class="card-body text-center">
@@ -126,7 +111,6 @@
                     <button type="button" onclick="addToCart(8)" class="btn btn-primary">Add to cart</button>
                 </div>
             </div>
-
             <div class="card col-sm-3 m-1 ml-5 p-4" style="width: 18rem;">
                 <img src="./images/product.svg" class="grocery-img">
                 <div class="card-body text-center">
@@ -135,13 +119,10 @@
                     <button type="button" onclick="addToCart(9)" class="btn btn-primary">Add to cart</button>
                 </div>
             </div>
-
         </div>
     </section>
-
     <!-- modal -->
     <aside>
-
         <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable" role="document">
                 <div class="modal-content">
@@ -153,10 +134,8 @@
                     </div>
                     <div class="modal-body">
                         <!-- listing items starts -->
-
                         <div>
                             <ul class="list">
-
                             </ul>
                             <div>
                                 <h3 class="text-center bill px-5">Select Something</h3>
@@ -164,7 +143,6 @@
                             <div class="text-center">
                                 <a href="checkout.html" class="btn btn-primary m-3">Checkout</a>
                             </div>
-
                             <div id="cart-modal"></div>
                         </div>
                         <!-- listing items ends -->
@@ -176,18 +154,12 @@
             </div>
         </div>
     </aside>
-
-
-
-
-
     <!-- script tags -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
     <script src="js/shop.js"></script>
-
 </body>
 
 </html>
