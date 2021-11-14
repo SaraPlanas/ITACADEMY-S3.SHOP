@@ -180,15 +180,19 @@ function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
     for (var i = 0; i < cart.length; i++) {
         if (cart[i].id == 1) {
-            if (cart[i].quantity >= 2) {
+            if (cart[i].quantity > 2) {
                 cart[i].price = 10;
                 cart[i].subtotalWithDiscount = cart[i].quantity * cart[i].price;
+            } else {
+                cart[i].price = 10.5;
             }
         }
         if (cart[i].id == 3) {
-            if (cart[i].quantity >= 10) {
+            if (cart[i].quantity > 9) {
                 cart[i].price = (cart[i].price * 0.66666666666);
                 cart[i].subtotalWithDiscount = cart[i].quantity * cart[i].price
+            } else {
+                cart[i].price = 5;
             }
         }
     }
@@ -231,11 +235,22 @@ function removeFromCart(id) {
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cartList array
 
-    alert("Eliminando");
-    var parent = document.getElementById("'" + id + "'").parentNode;
-    parent.removeChild(document.getElementById("'" + id + "'"));
-    alert("Eliminado");
-    console.log(cart)
+    //buscamos el elemento del carrito por id
+    for (i = 0; i < cart.length; i++) {
+        if (cart[i].id == id) {
+            let quantity = cart[i].quantity;
+            if (quantity > 1) {
+                cart[i].quantity = quantity - 1
+            } else {
+                cart.splice(i, 1);
+            }
+
+            break;
+        }
+    }
+
+    applyPromotionsCart()
+    printCart()
 
 }
 
@@ -247,8 +262,9 @@ function printCart() {
     let htmlCart = "<ul>";
 
     for (i = 0; i < cart.length; i++) {
-        temp = "<li>" + cart[i].name + ("__Precio:") +
-            cart[i].price + ("__Cantidad:") + cart[i].quantity + '<button onclick="removeFromCart(' +
+        temp = "<li>" + cart[i].name +
+            ("(") + cart[i].quantity + (" unidades) --> ") + cart[i].price * cart[i].quantity + "€" +
+            '<button onclick="removeFromCart(' +
             cart[i].id + ')">X</button></li>'
         htmlCart += temp;
     }
